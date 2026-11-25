@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import foodData from "../data/foods";
 import FoodCard from "../components/FoodCard";
 import CategoryFilter from "../components/CategoryFilter";
@@ -10,8 +10,36 @@ function Home() {
     const navigate = useNavigate();
     const [category, setCategory] = useState("All");
     const [search, setSearch] = useState("");
+    const [apiFoods, setApiFoods] = useState([]);
 
-    const filteredFood = foodData.filter((food) => {
+    useEffect(() => {
+        const fetchFood = async () => {
+            try {
+                const response = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian");
+
+                const data = await response.json();
+
+                const formattedFoods = (data.meals || []).map((meal) => ({
+                    id: meal.idMeal,
+                    name: meal.strMeal,
+                    image: meal.strMealThumb,
+                    price: 149,
+                    category: "Other",
+                }));
+
+                setApiFoods(formattedFoods);
+
+            } catch (error) {
+                console.log("API Error:", error);
+            }
+        };
+
+        fetchFood();
+    }, []);
+
+    const allFoods = [...foodData, ...apiFoods];
+
+    const filteredFood = allFoods.filter((food) => {
         const matchCategory = category === "All" || food.category === category;
         const matchSearch = food.name.toLowerCase().includes(search.toLowerCase());
 

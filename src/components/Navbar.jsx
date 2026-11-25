@@ -11,7 +11,7 @@ function Navbar() {
             {/* Navbar Content */}
             <NavLink to="/">Home</NavLink>
             <NavLink to="/menu">Menu</NavLink>
-            <NavLink to="/cart">🛒 Cart ({cart.length})</NavLink>
+            <NavLink to="/cart">🛒 Cart ({cart.reduce((total, item) => total + item.quantity, 0)})</NavLink>
             <NavLink to="/orders">Orders</NavLink>
         </nav>
     )

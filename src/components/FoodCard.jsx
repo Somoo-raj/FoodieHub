@@ -4,10 +4,18 @@ import { CartContext } from "../context/CartContext";
 import "./FoodCard.css";
 
 function FoodCard({ food }) {
-    const { cart, setCart } = useContext(CartContext);
+    const { setCart } = useContext(CartContext);
 
     const handleAddToCart = () => {
-        setCart((prevCart) => [...prevCart, food]);
+        setCart((prevCart) => {
+            const existingFood = prevCart.find((item) => item.id === food.id);
+
+            if (existingFood) {
+                return prevCart.map((item) => item.id === food.id ? { ...item, quantity: item.quantity + 1 } : item);
+            }
+
+            return [...prevCart, { ...food, quantity: 1 }];
+        });
     };
 
     return (
