@@ -1,8 +1,6 @@
 .cart-page {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0;
+  max-width: 1000px;
+  margin: 40px auto;
   padding: 20px;
   color: white;
 }
@@ -16,7 +14,7 @@
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
   background: #1c1c1c;
   padding: 15px;
   margin-bottom: 15px;
@@ -36,7 +34,6 @@
 
 .cart-item button:hover {
   background: #e65320;
-  transform: scale(1.08);
 }
 
 .cart-item img {
@@ -54,7 +51,7 @@
 .cart-item p {
   color: #ff6b35;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .quantity-controls {
@@ -102,61 +99,39 @@
   margin: 0;
 }
 
-.checkout-btn {
-  width: 100%;
-  max-width: 250px;
-  padding: 13px 20px;
-  margin-top: 18px;
-  background: #ff6b35;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.checkout-btn:hover {
-  background: #e85a24;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .cart-page {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 12px;
+    padding: 10px;
+    margin: 10px auto;
   }
 
   .cart-item {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    text-align: center;
   }
 
   .cart-item img {
-    max-width: 65px;
-    max-height: 65px;
+    width: 60px;
+    height: 60px;
   }
 
   .cart-item h3 {
     display: inline-block;
     width: fit-content;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .cart-item p {
     font-size: 15px;
   }
   .quantity-controls {
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 2px;
+    gap: 3px;
     margin: 0;
   }
 
@@ -172,9 +147,7 @@
   }
 
   .cart-item > button {
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 4px 5px;
+    padding: 4px 6px;
     font-size: 13px;
   }
 }
