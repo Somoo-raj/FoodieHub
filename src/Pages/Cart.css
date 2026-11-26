@@ -99,6 +99,27 @@
   margin: 0;
 }
 
+.checkout-btn {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: 15px auto 0;
+  padding: 13px 18px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background: #e85a24;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 480px) {
   .cart-page {
     padding: 10px;

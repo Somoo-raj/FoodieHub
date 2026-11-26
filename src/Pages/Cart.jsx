@@ -39,10 +39,12 @@ function Cart() {
                 </div>
             ))}
 
-            <div className="cart-total">
-                <h2>Total: ₹ {totalPrice}</h2>
-                <button className="checkout-btn" onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
-            </div>
+            {cart.length > 0 && (
+                <div className="cart-total">
+                    <h2>Total: ₹ {totalPrice}</h2>
+                    <button className="checkout-btn" onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
+                </div>
+            )}
 
         </div>
     )
