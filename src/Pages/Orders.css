@@ -1,0 +1,55 @@
+.order-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.order-page h1 {
+  text-align: center;
+  color: #ff8c00;
+  margin-bottom: 25px;
+}
+
+.order-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-left: 4px solid #ff8c00;
+  border-right: 4px solid #ff8c00;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.order-card h2 {
+  color: #ff8c00;
+}
+
+.order-card p {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.order-card h3 {
+  color: #ff8c00;
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 12px;
+}
+
+@media (max-width: 480px) {
+  .order-page {
+    padding: 12px;
+  }
+
+  .order-card {
+    padding: 15px;
+  }
+
+  .order-card h3 {
+    text-align: center;
+  }
+}

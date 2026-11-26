@@ -11,9 +11,13 @@ function Checkout() {
     });
 
     const [submittedData, setSubmittedData] = useState(null);
+
     const [isEditing, setIsEditing] = useState(false);
-    const { cart, setCart } = useContext(CartContext);
+
+    const { cart, setCart, setOrders } = useContext(CartContext);
+
     const [deliveryType, setDeliveryType] = useState("delivery");
+
     const [orderPlaced, setOrderPlaced] = useState(false);
 
     const totalPrice = cart.reduce((total, item) => {
@@ -21,6 +25,17 @@ function Checkout() {
     }, 0);
 
     const handlePlaceOrder = () => {
+        setOrders((prevOrders) => [
+            ...prevOrders, {
+                id: Date.now(),
+                customer: submittedData,
+                deliveryType: deliveryType,
+                items: cart,
+                total: totalPrice,
+                date: new Date().toLocaleString(),
+            },
+        ]);
+
         setOrderPlaced(true);
         setCart([]);
     }
