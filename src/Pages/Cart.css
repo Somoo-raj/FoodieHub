@@ -116,38 +116,38 @@
   }
 
   .cart-item img {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
   }
 
   .cart-item h3 {
     display: inline-block;
     width: fit-content;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .cart-item p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .quantity-controls {
     justify-content: center;
-    gap: 5px;
+    gap: 3px;
     margin: 0;
   }
 
   .quantity-controls span {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .quantity-controls button {
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
+    width: 23px;
+    height: 23px;
+    font-size: 14px;
     padding: 0;
   }
 
   .cart-item > button {
-    padding: 4px 5px;
-    font-size: 10px;
+    padding: 4px 6px;
+    font-size: 13px;
   }
 }
