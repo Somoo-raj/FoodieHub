@@ -40,7 +40,7 @@
   padding-top: 12px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .order-page {
     padding: 12px;
   }

@@ -5,6 +5,7 @@ import Menu from "./Pages/Menu";
 import Cart from "./Pages/Cart";
 import Orders from "./Pages/Orders";
 import Checkout from "./Pages/CheckOut";
+import OrderDetails from "./Pages/OrderDetails";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order/:id" element={<OrderDetails />} />
       </Routes>
     </>
   )

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./Orders.css";
@@ -32,6 +33,9 @@ function Orders() {
                         ))}
 
                         <h3>Total : ₹ {order.total}</h3>
+                        <Link to={`/order/${order.id}`}>
+                            View Details
+                        </Link>
                     </div>
                 ))
             )
