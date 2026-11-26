@@ -1,9 +1,11 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import "./Cart.css";
 
 function Cart() {
     const { cart, setCart } = useContext(CartContext);
+    const navigate = useNavigate();
 
     const handleRemove = (index) => {
         setCart((prevCart) => prevCart.filter((_, i) => i !== index));
@@ -39,6 +41,7 @@ function Cart() {
 
             <div className="cart-total">
                 <h2>Total: ₹ {totalPrice}</h2>
+                <button className="checkout-btn" onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
             </div>
 
         </div>

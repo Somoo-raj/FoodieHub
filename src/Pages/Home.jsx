@@ -23,7 +23,7 @@ function Home() {
                     id: meal.idMeal,
                     name: meal.strMeal,
                     image: meal.strMealThumb,
-                    price: 149,
+                    price: 159,
                     category: "Other",
                 }));
 
