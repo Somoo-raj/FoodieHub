@@ -36,6 +36,7 @@
 
 .cart-item button:hover {
   background: #e65320;
+  transform: scale(1.08);
 }
 
 .cart-item img {
@@ -99,6 +100,26 @@
   color: #ff6b35;
   font-size: 24px;
   margin: 0;
+}
+
+.checkout-btn {
+  width: 100%;
+  max-width: 250px;
+  padding: 13px 20px;
+  margin-top: 18px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #e85a24;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
