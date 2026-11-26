@@ -1,5 +1,5 @@
 .cart-page {
-  max-width: 1000px;
+  max-width: 100vh;
   margin: 40px auto;
   padding: 20px;
   color: white;
@@ -14,7 +14,7 @@
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   background: #1c1c1c;
   padding: 15px;
   margin-bottom: 15px;
@@ -51,7 +51,7 @@
 .cart-item p {
   color: #ff6b35;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .quantity-controls {
@@ -101,8 +101,8 @@
 
 @media (max-width: 480px) {
   .cart-page {
-    padding: 12px;
-    margin: 20px auto;
+    padding: 10px;
+    margin: 10px auto;
   }
 
   .cart-item {
@@ -110,14 +110,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     box-sizing: border-box;
     text-align: center;
   }
 
   .cart-item img {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
   }
 
   .cart-item h3 {
