@@ -1,17 +1,28 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 import "./OrderDetails.css";
 
 function OrderDetails() {
     const { id } = useParams();
-    const { orders } = useContext(CartContext);
+    const { orders, setOrders } = useContext(CartContext);
+    const navigate = useNavigate();
 
     const order = orders.find((item) => item.id === Number(id));
 
     if (!order) {
         return <h2>Order not found!</h2>
     }
+
+    const handleCancelOrder = () => {
+        const confirmCancel = window.confirm("Are you sure you want to cancel this order?");
+
+        if (!confirmCancel) return;
+
+        setOrders((prevOrders) => prevOrders.map((item) => item.id === Number(id) ? { ...item, status: "Cancelled" } : item));
+        navigate("/orders");
+    };
 
     return (
         <div className="order-details">
@@ -39,6 +50,13 @@ function OrderDetails() {
             ))}
 
             <h2>Total : ₹ {order.total}</h2>
+            {order.status !== "Cancelled" && (
+                <button className="cancel-order-btn" onClick={handleCancelOrder}>Cancel Order</button>
+            )}
+
+            {order.status === "Cancelled" && (
+                <p> This order has been cancelled.</p>
+            )}
         </div >
     )
 }

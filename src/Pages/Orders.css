@@ -40,19 +40,40 @@
   padding-top: 12px;
 }
 
-.order-card a {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 18px;
-  background: #ff8c00;
-  color: #111;
-  text-decoration: none;
+.order-card a,
+.reorder-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  margin: 10px 10px 0 0;
+  border: none;
   border-radius: 6px;
+  font-size: 14px;
   font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
   transition: 0.3s;
 }
 
+.order-card a {
+  background: #ff8c00;
+  color: #111;
+}
+
 .order-card a:hover {
+  background: #e67e00;
+  transform: translateY(-2px);
+}
+
+.reorder-btn {
+  background: #ff8c00;
+  color: #111;
+}
+
+.reorder-btn:hover {
   background: #e67e00;
   transform: translateY(-2px);
 }

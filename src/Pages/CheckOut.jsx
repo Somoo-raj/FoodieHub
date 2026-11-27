@@ -33,6 +33,7 @@ function Checkout() {
                 items: cart,
                 total: totalPrice,
                 date: new Date().toLocaleString(),
+                status: "Placed",
             },
         ]);
 

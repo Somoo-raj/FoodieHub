@@ -31,6 +31,22 @@
   line-height: 1.6;
 }
 
+.cancel-order-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cancel-order-btn:hover {
+  background: #b02a37;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
   .order-details {
     margin: 15px auto;
