@@ -1,0 +1,72 @@
+.menu-management {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  color: white;
+}
+
+.menu-management h1 {
+  text-align: center;
+  color: #ff8c00;
+  margin-bottom: 30px;
+}
+
+.add-food-form {
+  background: #242424;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-food-form input,
+.add-food-form select {
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #333;
+  color: white;
+}
+
+.add-food-form button {
+  padding: 12px;
+  background: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.food-list {
+  margin-top: 35px;
+}
+
+.managed-food-card {
+  background: #242424;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.managed-food-card img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.managed-food-card h3 {
+  color: #ff8c00;
+  margin: 0 0 8px;
+}
+
+.managed-food-card p {
+  margin: 5px 0;
+  color: #ccc;
+}

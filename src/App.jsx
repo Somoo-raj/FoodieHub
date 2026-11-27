@@ -7,6 +7,7 @@ import Orders from "./Pages/Orders";
 import Checkout from "./Pages/CheckOut";
 import OrderDetails from "./Pages/OrderDetails";
 import Admin from "./Pages/Admin";
+import MenuManagenent from "./Pages/MenuManagenent";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order/:id" element={<OrderDetails />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/menumanagement" element={<MenuManagenent />} />
       </Routes>
     </>
   )
