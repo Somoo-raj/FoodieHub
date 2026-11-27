@@ -47,6 +47,76 @@
   transform: translateY(-2px);
 }
 
+.order-tracking {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px auto;
+  max-width: 600px;
+}
+
+.order-tracking h3 {
+  color: #ff8c00;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tracking-steps {
+  max-width: 250px;
+  margin: auto;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 55px;
+  position: relative;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 45px;
+  height: 20px;
+  width: 2px;
+  background: #555;
+}
+
+.step span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step p {
+  color: #aaa;
+  margin: 0;
+}
+
+.step.active span {
+  background: green;
+  color: #111;
+}
+
+.step.active p {
+  color: green;
+  font-weight: bold;
+}
+
+.step.active:not(:last-child)::after {
+  background: green;
+}
+
 @media (max-width: 600px) {
   .order-details {
     margin: 15px auto;

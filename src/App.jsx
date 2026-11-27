@@ -6,6 +6,7 @@ import Cart from "./Pages/Cart";
 import Orders from "./Pages/Orders";
 import Checkout from "./Pages/CheckOut";
 import OrderDetails from "./Pages/OrderDetails";
+import Admin from "./Pages/Admin";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order/:id" element={<OrderDetails />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
   )

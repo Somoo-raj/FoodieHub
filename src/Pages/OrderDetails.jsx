@@ -11,6 +11,11 @@ function OrderDetails() {
 
     const order = orders.find((item) => item.id === Number(id));
 
+    const statusSteps = ["Placed", "Preparing", "Ready", "Delivered"];
+
+    const currentStep = statusSteps.indexOf(order.status || "Placed");
+
+
     if (!order) {
         return <h2>Order not found!</h2>
     }
@@ -29,8 +34,8 @@ function OrderDetails() {
             <h1>Order Details</h1>
 
             <h2>Order #{order.id}</h2>
-            <p>Date : {order.date}</p>
 
+            <p>Date : {order.date}</p>
             <h3>Customer Details</h3>
             <p>Name : {order.customer.name}</p>
             <p>Phone : {order.customer.phone}</p>
@@ -50,6 +55,24 @@ function OrderDetails() {
             ))}
 
             <h2>Total : ₹ {order.total}</h2>
+
+            <div className="order-tracking">
+                <h3>Track Your Order</h3>
+
+                {order.status === "Cancelled" ? (
+                    <p>Order Canelled</p>
+                ) : (
+                    <div className="tracking-steps">
+                        {statusSteps.map((step, index) => (
+                            <div key={step} className={index <= currentStep ? "step active" : "step"}>
+                                <span>{index + 1}</span>
+                                <p>{step}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
             {order.status !== "Cancelled" && (
                 <button className="cancel-order-btn" onClick={handleCancelOrder}>Cancel Order</button>
             )}

@@ -14,13 +14,14 @@
 }
 
 .order-card {
+  max-width: 750px;
+  margin: 0 auto 20px;
+  box-sizing: border-box;
   background: #1c1c1c;
   border: 1px solid #333;
   border-left: 4px solid #ff8c00;
-  border-right: 4px solid #ff8c00;
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 20px;
 }
 
 .order-card h2 {
