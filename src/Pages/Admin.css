@@ -10,12 +10,12 @@
 .admin-page h1 {
   color: #ff8c00;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .admin-page h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   color: #ddd;
 }
 
@@ -55,6 +55,60 @@
   border-color: #ffa500;
 }
 
+.admin-summary {
+  display: flex;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 1000px;
+  margin: 25px auto;
+}
+
+.summary-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-left: 4px solid #ff8c00;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+
+.summary-card h3 {
+  color: #ddd;
+  font-size: 15px;
+}
+
+.summary-card h2 {
+  color: #ff8c00;
+  font-size: 28px;
+  margin: 10px 0 0;
+}
+
+.recent-orders {
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.recent-orders h2 {
+  color: #ff8c00;
+  margin-bottom: 20px;
+}
+
+.recent-order-card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-left: 4px solid #ff8c00;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+}
+
+.recent-order-card p {
+  color: #ddd;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
 @media (max-width: 600px) {
   .admin-page {
     padding: 12px;
@@ -74,5 +128,37 @@
 
   .admin-order-card select {
     max-width: 100%;
+  }
+
+  .recent-orders {
+    padding: 0 10px;
+  }
+
+  .recent-order-card {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .summary-card {
+    min-width: 0;
+    padding: 12px 6px;
+    box-sizing: border-box;
+  }
+  .summary-card h3 {
+    font-size: 13px;
+  }
+  .summary-card h2 {
+    font-size: 22px;
   }
 }

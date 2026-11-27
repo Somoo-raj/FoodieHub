@@ -73,7 +73,7 @@ function OrderDetails() {
                 )}
             </div>
 
-            {order.status !== "Cancelled" && (
+            {order.status !== "Cancelled" && order.status !== "Delivered" && (
                 <button className="cancel-order-btn" onClick={handleCancelOrder}>Cancel Order</button>
             )}
 
