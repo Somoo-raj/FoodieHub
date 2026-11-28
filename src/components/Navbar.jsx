@@ -15,7 +15,7 @@ function Navbar() {
     return (
         <nav className="nav">
             <h2 className="nav-brand">FoodieHub</h2>
-            <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "X" : "☰"}</button>
+            <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "x" : "☰"}</button>
             {/* Navbar Content */}
             <div className={`nav-links ${menuOpen ? "show" : ""}`}>
                 <NavLink to="/" onClick={closeMenu}>Home</NavLink>
