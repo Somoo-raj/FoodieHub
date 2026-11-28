@@ -2,6 +2,27 @@ import "./MenuManagenent.css";
 import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
+// Compression function
+async function compressImage(file) {
+    const bitmap = await createImageBitmap(file);
+
+    const canvas = document.createElement("canvas");
+
+    const maxSize = 800;
+    const scale = Math.min(1, maxSize / Math.max(bitmap.width, bitmap.height));
+
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+
+    bitmap.close();
+
+    return canvas.toDataURL("image/jpeg", 0.7);
+}
+
 function MenuManagenent() {
     const [foodData, setFoodData] = useState({
         name: "",
@@ -13,6 +34,10 @@ function MenuManagenent() {
     const [editId, setEditId] = useState(null);
 
     const { menuFoods, setMenuFoods } = useContext(CartContext);
+
+    const [searchFood, setSearchFood] = useState("");
+    const [filterCategory, setFilterCayegory] = useState("All");
+    const [filterStatus, setFilterStatus] = useState("All");
 
     const handleAddFood = (e) => {
         e.preventDefault();
@@ -42,6 +67,13 @@ function MenuManagenent() {
 
         setEditId(null);
     };
+
+    const filterFoods = menuFoods.filter((food) => {
+        const matchSearch = food.name.toLowerCase().includes(searchFood.toLowerCase());
+        const matchCategory = filterCategory === "All" || food.category === filterCategory;
+        const matchStatus = filterStatus === "All" || (filterStatus === "Available" && food.isAvailable !== false) || (filterStatus === "Unavailable" && food.isAvailable === false);
+        return matchSearch && matchCategory && matchStatus;
+    });
 
     return (
         <div className="menu-management">
@@ -79,30 +111,62 @@ function MenuManagenent() {
                 <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => {
+                    onChange={async (e) => {
                         const file = e.target.files[0];
 
                         if (!file) return;
 
-                        const reader = new FileReader();
+                        const compressedImage = await compressImage(file);
+                        console.log(compressedImage.slice(0, 50));
 
-                        reader.onloadend = () => {
-                            setFoodData({ ...foodData, image: reader.result, });
-                        };
 
-                        reader.readAsDataURL(file);
+                        setFoodData((prev) => ({
+                            ...prev, image: compressedImage,
+                        }));
                     }}
                 />
 
                 <button type="submit"> {editId !== null ? "Update Food" : "Add Food"}</button>
             </form>
 
+            <div className="food-filters">
+                {/* Admin serach input */}
+                <input
+                    type="text"
+                    placeholder="Search Food..."
+                    value={searchFood}
+                    onChange={(e) => setSearchFood(e.target.value)}
+                />
+
+                <select value={filterCategory} onChange={(e) => setFilterCayegory(e.target.value)}>
+                    <option value="All">All</option>
+                    <option value="Fast Food">Fast Food</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <select
+                    value={filterStatus}
+                    onChange={(e) => setFilterStatus(e.target.value)}>
+                    <option value="All">All</option>
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
+                </select>
+
+                <button onClick={() => {
+                    setSearchFood("");
+                    setFilterCayegory("All");
+                    setFilterStatus("All");
+                }}>Clear Filters</button>
+            </div>
+
             <div className="food-list">
                 <h2>Food List</h2>
 
-                {menuFoods.map((food) => (
+                {filterFoods.map((food) => (
                     <div key={food.id} className="managed-food-card">
-                        {food.image && (
+                        {typeof food.image === "string" && food.image.startsWith("data:image/") && (
                             <img
                                 src={food.image}
                                 alt={food.name}
