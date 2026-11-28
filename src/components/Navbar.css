@@ -44,6 +44,10 @@
   flex-wrap: wrap;
 }
 
+.cart-link {
+  border: 1px solid #ff6b35;
+}
+
 @media (max-width: 600px) {
   .nav {
     justify-content: center;
