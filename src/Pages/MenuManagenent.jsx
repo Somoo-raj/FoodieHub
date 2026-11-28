@@ -24,12 +24,12 @@ function MenuManagenent() {
 
         if (editId !== null) {
             // Existing food update
-            setMenuFoods((prevFoods) => prevFoods.map((food) => food.id === editId ? { ...foodData, id: editId, price: Number(foodData.price) } : food));
+            setMenuFoods((prevFoods) => prevFoods.map((food) => food.id === editId ? { ...foodData, id: editId, price: Number(foodData.price), isAvailable: food.isAvailable ?? true, } : food));
         } else {
             // New food add
             setMenuFoods((prevFoods) => [
                 ...prevFoods, {
-                    ...foodData, id: Date.now(), price: Number(foodData.price),
+                    ...foodData, id: Date.now(), price: Number(foodData.price), isAvailable: true,
                 },
             ]);
         }
@@ -113,6 +113,10 @@ function MenuManagenent() {
                         <h3>{food.name}</h3>
                         <p>₹ {food.price}</p>
                         <p>{food.category}</p>
+                        <p>Status : {food.isAvailable ? "Available" : "Unavailable"}</p>
+
+                        <button onClick={() => setMenuFoods((prevFoods) =>
+                            prevFoods.map((item) => item.id === food.id ? { ...item, isAvailable: !item.isAvailable } : item))}>{food.isAvailable ? "Mark Unavailable" : "Mark Available"}</button>
 
                         <button onClick={() => {
                             setFoodData({

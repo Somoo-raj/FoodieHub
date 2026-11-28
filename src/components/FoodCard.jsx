@@ -23,7 +23,9 @@ function FoodCard({ food }) {
             <img src={food.image} alt={food.name} />
             <h3>{food.name}</h3>
             <p>₹ {food.price}</p>
-            <button onClick={handleAddToCart}>Add to Cart</button>
+
+            {food.isAvailable === false ? (<p className="unavailable-text">Currently Unavailable</p>) :
+                (<button onClick={() => handleAddToCart(food)}>Add to Cart</button>)}
         </div>
     )
 }
