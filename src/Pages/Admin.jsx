@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./Admin.css";
+import { Link } from "react-router-dom";
 
 function Admin() {
     const { orders, setOrders } = useContext(CartContext);
@@ -46,6 +47,12 @@ function Admin() {
                     <h3>Total Revenue</h3>
                     <h2>{totalRevenue}</h2>
                 </div>
+            </div>
+
+            <div className="menu-management-link">
+                <h2>Menu Management</h2>
+
+                <Link to="/menu-management">Manage Food Menu</Link>
             </div>
 
             <div className="recent-orders">

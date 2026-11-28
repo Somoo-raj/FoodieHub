@@ -9,11 +9,28 @@ export function CartProvider({ children }) {
         return saveOrders ? JSON.parse(saveOrders) : [];
     });
 
+    const [menuFoods, setMenuFoods] = useState(() => {
+        const savedFoods = localStorage.getItem("menuFoods");
+        return savedFoods ? JSON.parse(savedFoods) : [];
+    });
+
     useEffect(() => {
         localStorage.setItem("orders", JSON.stringify(orders));
     }, [orders]);
 
+    useEffect(() => {
+        localStorage.setItem("menuFoods", JSON.stringify(menuFoods));
+    }, [menuFoods]);
+
     return (
-        <CartContext.Provider value={{ cart, setCart, orders, setOrders }}>{children}</CartContext.Provider>
+        <CartContext.Provider
+            value={{
+                cart,
+                setCart,
+                orders,
+                setOrders,
+                menuFoods,
+                setMenuFoods,
+            }}>{children}</CartContext.Provider>
     )
 }

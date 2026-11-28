@@ -1,5 +1,6 @@
 import "./MenuManagenent.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function MenuManagenent() {
     const [foodData, setFoodData] = useState({
@@ -9,7 +10,9 @@ function MenuManagenent() {
         image: null,
     });
 
-    const [foodList, setFoodList] = useState([]);
+    const [editId, setEditId] = useState(null);
+
+    const { menuFoods, setMenuFoods } = useContext(CartContext);
 
     const handleAddFood = (e) => {
         e.preventDefault();
@@ -19,18 +22,25 @@ function MenuManagenent() {
             return;
         }
 
-        setFoodList((prevFoods) => [
-            ...prevFoods, {
-                ...foodData, id: Date.now(), price: Number(foodData.price),
-            },
-        ]);
-
+        if (editId !== null) {
+            // Existing food update
+            setMenuFoods((prevFoods) => prevFoods.map((food) => food.id === editId ? { ...foodData, id: editId, price: Number(foodData.price) } : food));
+        } else {
+            // New food add
+            setMenuFoods((prevFoods) => [
+                ...prevFoods, {
+                    ...foodData, id: Date.now(), price: Number(foodData.price),
+                },
+            ]);
+        }
         setFoodData({
             name: "",
             price: "",
             category: "",
             image: null,
         });
+
+        setEditId(null);
     };
 
     return (
@@ -69,21 +79,33 @@ function MenuManagenent() {
                 <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => setFoodData({ ...foodData, image: e.target.files[0] })}
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+
+                        if (!file) return;
+
+                        const reader = new FileReader();
+
+                        reader.onloadend = () => {
+                            setFoodData({ ...foodData, image: reader.result, });
+                        };
+
+                        reader.readAsDataURL(file);
+                    }}
                 />
 
-                <button type="submit">Add Food</button>
+                <button type="submit"> {editId !== null ? "Update Food" : "Add Food"}</button>
             </form>
 
             <div className="food-list">
                 <h2>Food List</h2>
 
-                {foodList.map((food) => (
+                {menuFoods.map((food) => (
                     <div key={food.id} className="managed-food-card">
                         {food.image && (
                             <img
-                                src={URL.createObjectURL(food.image)}
-                                alt={food.image}
+                                src={food.image}
+                                alt={food.name}
                                 width="100"
                             />
                         )}
@@ -91,6 +113,19 @@ function MenuManagenent() {
                         <h3>{food.name}</h3>
                         <p>₹ {food.price}</p>
                         <p>{food.category}</p>
+
+                        <button onClick={() => {
+                            setFoodData({
+                                name: food.name,
+                                price: food.price,
+                                category: food.category,
+                                image: food.image,
+                            });
+
+                            setEditId(food.id);
+
+                        }}>Edit</button>
+                        <button onClick={() => setMenuFoods((prevFoods) => prevFoods.filter((item) => item.id !== food.id))}>Delete</button>
                     </div>
                 ))}
             </div>

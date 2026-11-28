@@ -23,7 +23,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order/:id" element={<OrderDetails />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/menumanagement" element={<MenuManagenent />} />
+        <Route path="/menu-management" element={<MenuManagenent />} />
       </Routes>
     </>
   )

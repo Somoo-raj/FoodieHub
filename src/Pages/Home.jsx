@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import foodData from "../data/foods";
 import FoodCard from "../components/FoodCard";
 import CategoryFilter from "../components/CategoryFilter";
@@ -11,6 +12,7 @@ function Home() {
     const [category, setCategory] = useState("All");
     const [search, setSearch] = useState("");
     const [apiFoods, setApiFoods] = useState([]);
+    const { menuFoods } = useContext(CartContext);
 
     useEffect(() => {
         const fetchFood = async () => {
@@ -37,7 +39,7 @@ function Home() {
         fetchFood();
     }, []);
 
-    const allFoods = [...foodData, ...apiFoods];
+    const allFoods = [...foodData, ...apiFoods, ...menuFoods];
 
     const filteredFood = allFoods.filter((food) => {
         const matchCategory = category === "All" || food.category === category;
