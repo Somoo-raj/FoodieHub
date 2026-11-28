@@ -8,6 +8,7 @@ function Navbar() {
 
     return (
         <nav className="nav">
+            <h2 className="nav-brand">FoodieHub</h2>
             {/* Navbar Content */}
             <NavLink to="/">Home</NavLink>
             <NavLink to="/menu">Menu</NavLink>

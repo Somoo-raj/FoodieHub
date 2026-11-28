@@ -29,6 +29,14 @@
   background: #33231d;
 }
 
+.nav-brand {
+  color: #ff6b35;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 600px) {
   .nav {
     justify-content: center;
